@@ -1,0 +1,65 @@
+// For format details, see https://aka.ms/devcontainer.json
+{
+	"name": "Default Linux Universal",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"upgradePackages": true,
+			"nonFreePackages": true,
+			"username": "codespace",
+			"userUid": "automatic",
+			"userGid": "automatic"
+		},
+		"ghcr.io/devcontainers/features/sshd:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "latest",
+			"ppa": "false"
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"version": "latest"
+		}
+	},
+	"overrideFeatureInstallOrder": [
+		"ghcr.io/devcontainers/features/common-utils",
+		"ghcr.io/devcontainers/features/git",
+		"ghcr.io/devcontainers/features/sshd",
+		"ghcr.io/devcontainers/features/github-cli",
+		"ghcr.io/stuartleeks/dev-container-features/shell-history:0"
+	],
+	"remoteUser": "codespace",
+	"containerUser": "codespace",
+	"updateRemoteUserUID": true,
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"workspaceMount": "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind,consistency=cached",
+	"customizations": {
+		"settings": {
+			"remote.containers.copyGitConfig": true
+		},
+		"vscode": {
+			"extensions": [
+				"eamodio.gitlens",
+				"eduarbo.relative-file-navigator",
+				"GitHub.copilot-chat",
+				"GitHub.copilot",
+				"github.vscode-github-actions",
+				"github.vscode-pull-request-github",
+				"JakeBecker.elixir-ls",
+				"ms-azuretools.vscode-docker",
+				"ow.vscode-subword-navigation",
+				"samuel-pordeus.elixir-test"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "fish",
+				"terminal.integrated.profiles.linux": {
+					"zsh": {
+						"path": "/bin/fish"
+					}
+				}
+			}
+		}
+	}
+}
